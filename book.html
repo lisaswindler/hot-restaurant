@@ -58,6 +58,37 @@
 	    </footer>
 
 	</div>
+	<script type="text/javascript">
+		$.ajax({url: window.location.origin + "/api/tables", method: "GET"}).done(function(data){
+			console.log(data);
+			for(var i = 0; i < data.length; i++){
+				var booked = $("<div>");
+				booked.addClass('booked')
+				booked.attr('id', 'booked-' + i + 1)
+				$('#tableSection').append(booked);
+
+				var number = i + 1;
+
+				$("#booked-"+ i+1).append('<h2><span class="label label-danger">' + number + '</span> | ' + data[i].name + " | Party Size: " + data[i].partysize + '</h2>');
+			}
+
+		});
+		$.ajax({url: window.location.origin + "/api/waitlist", method: "GET"}).done(function(data){
+			console.log(data);
+			for(var i = 0; i < data.length; i++){
+				var waiting = $("<div>");
+				waiting.addClass('waiting')
+				waiting.attr('id', 'waiting-' + i + 1)
+				$('#waitlistSection').append(waiting);
+
+				var number = i + 1;
+
+				$("#waiting-"+ i+1).append('<h2><span class="label label-warning">' + number + '</span> | ' + data[i].name + " | Party Size: " + data[i].partysize + '</h2>');
+			}
+
+		});
+
+	</script>
 
 </body>
 <html>

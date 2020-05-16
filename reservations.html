@@ -49,8 +49,8 @@
 							</div>
 
 							<div class="form-group">
-								<label for="">Email</label>
-								<input type="text" class="form-control" id="reserve_email">
+								<label for="">Party Size</label>
+								<input type="text" class="form-control" id="reserve_party">
 							</div>
 
 							<div class="form-group">
@@ -76,5 +76,48 @@
 
 	</div>
 
+	<script type="text/javascript">
+
+		
+		$(".submit").on("click", function(){
+			event.preventDefault();
+			// Here we grab the form elements
+			var newReservation = {
+				name: $('#reserve_name').val().trim(),
+				phone: $('#reserve_phone').val().trim(),
+				partysize: $('#reserve_party').val().trim(),
+				uniqueID: $('#reserve_uniqueID').val().trim()
+
+			};
+	
+			console.log(newReservation);
+	
+			
+			$.post("/api/tables", newReservation,
+				function(data){
+	
+				
+					if(data === "Reserve") {
+					alert("You are officially booked!")
+					} else if (data === "Waitlist"){
+						alert("Sorry you are on the wait list");
+					} else {
+						alert("error");
+					}
+
+				
+				$('#reserve_name').val("");
+				$('#reserve_phone').val("");
+				$('#reserve_party').val("");
+				$('#reserve_uniqueID').val("");
+	
+			});
+	
+	return false;
+	
+	});
+	
+	</script>
 </body>
 </html>
+
