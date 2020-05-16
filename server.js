@@ -20,10 +20,16 @@ var maxReservations = 50;
 
 var reservations = [
     {
-        name: "Yoda",
+        name: "Jordan",
         phone: "555-555-5555",
-        party: 3,
-        id: "yoda"
+        party: 5,
+        id: "Lord Jord"
+    },
+    {
+        name: "Jon",
+        phone: "555-555-5555",
+        party: 10,
+        id: "The Mighty Meidell"
     }
 ];
 
@@ -31,8 +37,8 @@ var waitlist = [
     {
         name: "Daniel Sochor",
         phone: 6309982436,
-        partysize: 2,
-        uniqueID: "Muscle Man Dan"
+        party: 1.5,
+        id: "Muscle Man Dan"
     }
 ];
 // =============================================================
